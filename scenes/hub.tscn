@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8dbjos6mq1g8"]
+[gd_scene load_steps=6 format=3 uid="uid://c8dbjos6mq1g8"]
 
 [ext_resource type="Material" uid="uid://b0r2qflnvim52" path="res://scenes/room test material.tres" id="1_234o8"]
-[ext_resource type="PackedScene" uid="uid://cu1cm7w13xs3" path="res://charters/player.tscn" id="2_8qi2g"]
+[ext_resource type="PackedScene" uid="uid://itlyryase1br" path="res://charters/player_spawn.tscn" id="2_35njy"]
+[ext_resource type="PackedScene" uid="uid://fnsjbs0cteda" path="res://door/Door.tscn" id="3_hyvus"]
 
 [sub_resource type="Environment" id="Environment_cmf6i"]
 ambient_light_source = 2
@@ -45,5 +46,14 @@ flip_faces = true
 size = Vector3(41, 13, 2)
 material = SubResource("StandardMaterial3D_skycv")
 
-[node name="Player" parent="." instance=ExtResource("2_8qi2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+[node name="player_spawn" parent="." instance=ExtResource("2_35njy")]
+
+[node name="Door_A" parent="." instance=ExtResource("3_hyvus")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 10, 2.37342, -14)
+destination_scene = "res://scenes/passage.tscn"
+tag = "A"
+
+[node name="Door_B" parent="." instance=ExtResource("3_hyvus")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -11, 2.37342, -14)
+destination_scene = "res://scenes/passage.tscn"
+tag = "B"

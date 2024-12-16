@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgtgkxtx0xop1"]
+[gd_scene load_steps=3 format=3 uid="uid://dgtgkxtx0xop1"]
 
 [ext_resource type="Script" path="res://Global_scripts/scene_manager.gd" id="1_nsx88"]
+[ext_resource type="PackedScene" uid="uid://cu1cm7w13xs3" path="res://charters/player.tscn" id="2_as86m"]
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_nsx88")
+player_packed_sceane = ExtResource("2_as86m")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 offset_right = 1152.0

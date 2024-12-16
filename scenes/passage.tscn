@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4d0s1yjx2fe3"]
+[gd_scene load_steps=5 format=3 uid="uid://c4d0s1yjx2fe3"]
 
 [ext_resource type="Material" uid="uid://b0r2qflnvim52" path="res://scenes/room test material.tres" id="1_1q80s"]
+[ext_resource type="PackedScene" uid="uid://fnsjbs0cteda" path="res://door/Door.tscn" id="2_dqtfs"]
 
 [sub_resource type="Environment" id="Environment_f3epd"]
 ambient_light_source = 2
@@ -56,3 +57,13 @@ operation = 2
 flip_faces = true
 size = Vector3(41, 13, 2)
 material = SubResource("StandardMaterial3D_r88ro")
+
+[node name="Door_A" parent="." instance=ExtResource("2_dqtfs")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 10.9343, 3, -11.7146)
+destination_scene = "res://scenes/hub.tscn"
+tag = "A"
+
+[node name="Door_B" parent="." instance=ExtResource("2_dqtfs")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -11.0657, 3, -11.7146)
+destination_scene = "res://scenes/hub.tscn"
+tag = "B"
