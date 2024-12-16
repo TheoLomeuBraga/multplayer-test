@@ -6,7 +6,6 @@
 script = ExtResource("1_nsx88")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 

@@ -15,6 +15,10 @@ run/main_scene="res://scenes/hub.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneManager="*res://Global_scripts/SceneManager.tscn"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
