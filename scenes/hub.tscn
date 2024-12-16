@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8dbjos6mq1g8"]
+
+[ext_resource type="Material" uid="uid://b0r2qflnvim52" path="res://scenes/room test material.tres" id="1_234o8"]
+[ext_resource type="PackedScene" uid="uid://cu1cm7w13xs3" path="res://charters/player.tscn" id="2_8qi2g"]
+
+[sub_resource type="Environment" id="Environment_cmf6i"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skycv"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[node name="HUB" type="CSGCombiner3D"]
+use_collision = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_cmf6i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, -0.482963, 0.12941, -7.19671e-09, 0.258819, 0.965926, -0.5, -0.836516, 0.224144, 0, 7, 13)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5, 0.5)
+flip_faces = true
+size = Vector3(31, 13, 14)
+material = ExtResource("1_234o8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 3.5, -12)
+flip_faces = true
+size = Vector3(14, 7, 8)
+material = ExtResource("1_234o8")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 3.5, -12)
+flip_faces = true
+size = Vector3(14, 7, 8)
+material = ExtResource("1_234o8")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6, -19.5)
+operation = 2
+flip_faces = true
+size = Vector3(41, 13, 2)
+material = SubResource("StandardMaterial3D_skycv")
+
+[node name="Player" parent="." instance=ExtResource("2_8qi2g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)

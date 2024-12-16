@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu1cm7w13xs3"]
+
+[ext_resource type="Script" path="res://charters/player.gd" id="1_076wp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5kg1d"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_betf4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byis4"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x4uuo"]
+radius = 0.08
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ievh"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_076wp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5kg1d")
+
+[node name="body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_betf4")
+surface_material_override/0 = SubResource("StandardMaterial3D_byis4")
+
+[node name="r_eye" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30478, 0.483298, -0.364083)
+mesh = SubResource("CapsuleMesh_x4uuo")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ievh")
+
+[node name="l_eye" type="MeshInstance3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.305, 0.483, -0.363881)
+mesh = SubResource("CapsuleMesh_x4uuo")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_2ievh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.599229, -0.414761)
+fov = 90.0

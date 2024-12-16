@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4d0s1yjx2fe3"]
+
+[ext_resource type="Material" uid="uid://b0r2qflnvim52" path="res://scenes/room test material.tres" id="1_1q80s"]
+
+[sub_resource type="Environment" id="Environment_f3epd"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r88ro"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[node name="Passage" type="CSGCombiner3D"]
+use_collision = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f3epd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, -0.482963, 0.12941, -7.19671e-09, 0.258819, 0.965926, -0.5, -0.836516, 0.224144, 0, 7, 13)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11, 3.5, -18.5)
+flip_faces = true
+size = Vector3(25, 7, 8)
+material = ExtResource("1_1q80s")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 3.5, -18.5)
+flip_faces = true
+size = Vector3(25, 7, 8)
+material = ExtResource("1_1q80s")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.74228e-08, 3.5, -44.5)
+flip_faces = true
+size = Vector3(13, 7, 8)
+material = ExtResource("1_1q80s")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 4.5, -30.5)
+flip_faces = true
+size = Vector3(17, 9, 33)
+material = ExtResource("1_1q80s")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6, -5.5)
+operation = 2
+flip_faces = true
+size = Vector3(41, 13, 2)
+material = SubResource("StandardMaterial3D_r88ro")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6, -51.5)
+operation = 2
+flip_faces = true
+size = Vector3(41, 13, 2)
+material = SubResource("StandardMaterial3D_r88ro")
