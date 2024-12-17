@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://p4sp7hudicvp"]
+
+[ext_resource type="PackedScene" uid="uid://fnsjbs0cteda" path="res://door/Door.tscn" id="1_onivn"]
+[ext_resource type="Material" uid="uid://b0r2qflnvim52" path="res://scenes/room test material.tres" id="2_vymmu"]
+
+[sub_resource type="Environment" id="Environment_hhf4s"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ood36"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uiw7u"]
+albedo_color = Color(0.5948, 0.343298, 0.240423, 1)
+
+[node name="Arena" type="CSGCombiner3D"]
+use_collision = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hhf4s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, -0.482963, 0.12941, -7.19671e-09, 0.258819, 0.965926, -0.5, -0.836516, 0.224144, 0, 7, 13)
+
+[node name="Door_C" parent="." instance=ExtResource("1_onivn")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.0656996, 3, -45.7146)
+destination_scene = "res://scenes/passage.tscn"
+tag = "C"
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.55671e-08, 3.5, -48)
+flip_faces = true
+size = Vector3(20, 7, 8)
+material = ExtResource("2_vymmu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14975, 3.638, -37.7789)
+operation = 2
+flip_faces = true
+size = Vector3(15.3071, 8.276, 1)
+material = SubResource("StandardMaterial3D_ood36")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.913545, 0, 0.406737, 0, 1, 0, -0.406737, 0, 0.913545, 0, 13, -73.832)
+flip_faces = true
+radius = 18.0
+height = 26.0
+material = SubResource("StandardMaterial3D_uiw7u")

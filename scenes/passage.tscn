@@ -67,3 +67,8 @@ tag = "A"
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -11.0657, 3, -11.7146)
 destination_scene = "res://scenes/hub.tscn"
 tag = "B"
+
+[node name="Door_C" parent="." instance=ExtResource("2_dqtfs")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.0656996, 3, -45.7146)
+destination_scene = "res://scenes/arena.tscn"
+tag = "C"
