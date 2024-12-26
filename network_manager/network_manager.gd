@@ -34,6 +34,8 @@ func _on_host_pressed() -> void:
 	multiplayer.peer_connected.connect(SceneManager.set_player_id)
 	multiplayer.peer_disconnected.connect(SceneManager.remove_player_by_id)
 	
+	SceneManager.set_player_id(1)
+	
 	SceneManager.reload()
 	my_player_node = SceneManager.player_node
 	set_j_h_visibility(false)

@@ -30,6 +30,8 @@ func set_color() -> void:
 
 func _ready() -> void:
 	set_color()
+	if not name.is_valid_int():
+		queue_free()
 
 
 
@@ -57,6 +59,7 @@ func _physics_process(delta: float) -> void:
 		
 		coldow_timer -= delta
 		if Input.is_action_pressed("ui_accept") and coldow_timer <= 0:
+			shoot()
 			shoot.rpc()
 			coldow_timer = 0.2
 	

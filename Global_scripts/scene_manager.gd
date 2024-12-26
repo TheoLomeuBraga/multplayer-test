@@ -8,17 +8,28 @@ var player_node : Player = null
 
 @export var player_packed_sceane : PackedScene
 
-var player_id : int
+var player_id : int = 1
 
 
 func spawn_player(g_pos:Vector3) -> void:
+	
+	'''
+	for c in $MultplaterRoot.get_children():
+		print(c.name)
+	'''
+	
+	var n : Node = $MultplaterRoot.get_node(str(player_id))
+	if n != null:
+		n.queue_free()
+		
+	
 	var g_rot : Vector3 = Vector3.ZERO
 	
 	if player_node != null:
 		g_rot = player_node.global_rotation
 		#player_node.queue_free()
-	
-	
+		
+		
 	player_node = player_packed_sceane.instantiate()
 	player_node.name = str(player_id)
 	$MultplaterRoot.add_child(player_node)
@@ -29,8 +40,10 @@ func spawn_player(g_pos:Vector3) -> void:
 
 func set_player_id(id = 1) -> void:
 	player_id = id
+	
 	if player_node == null:
 		spawn_player(Vector3.ZERO)
+	
 	spawn_player(player_node.global_position)
 
 func remove_player_by_id(id = 1) -> void:
