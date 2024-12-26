@@ -8,8 +8,8 @@ script = ExtResource("1_nsx88")
 player_packed_sceane = ExtResource("2_as86m")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 500.0
+offset_bottom = 300.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer"]
 layout_mode = 2
@@ -24,3 +24,10 @@ vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://charters/player.tscn", "res://charters/bullet.tscn")
+spawn_path = NodePath("../MultplaterRoot")
+spawn_limit = 255
+
+[node name="MultplaterRoot" type="Node" parent="."]

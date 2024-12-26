@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dir6ny22ifa77"]
+
+[ext_resource type="Script" path="res://charters/bullet.gd" id="1_le25a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x75xw"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yhc0o"]
+material = SubResource("StandardMaterial3D_x75xw")
+radius = 0.1
+height = 0.2
+radial_segments = 4
+rings = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_15blg"]
+radius = 0.25
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_p1j20"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Bullet" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_yhc0o")
+script = ExtResource("1_le25a")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("SphereShape3D_15blg")
+target_position = Vector3(0, 0, 0)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_p1j20")
