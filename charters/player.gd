@@ -35,12 +35,13 @@ func _ready() -> void:
 
 
 
-@rpc
+@rpc("authority","call_local","unreliable",0)
 func shoot():
-	var b : Node3D = bullet_asset.instantiate()
-	get_parent().add_child(b)
-	b.global_position = $muzle.global_position
-	b.global_rotation = $muzle.global_rotation
+	if multiplayer.is_server():
+		var b : Node3D = bullet_asset.instantiate()
+		get_parent().add_child(b)
+		b.global_position = $muzle.global_position
+		b.global_rotation = $muzle.global_rotation
 
 func _physics_process(delta: float) -> void:
 	
@@ -59,7 +60,6 @@ func _physics_process(delta: float) -> void:
 		
 		coldow_timer -= delta
 		if Input.is_action_pressed("ui_accept") and coldow_timer <= 0:
-			shoot()
 			shoot.rpc()
 			coldow_timer = 0.2
 	
