@@ -13,11 +13,6 @@ var player_id : int = 1
 
 func spawn_player(g_pos:Vector3) -> void:
 	
-	'''
-	for c in $MultplaterRoot.get_children():
-		print(c.name)
-	'''
-	
 	var n : Node = $MultplaterRoot.get_node(str(player_id))
 	if n != null:
 		n.queue_free()

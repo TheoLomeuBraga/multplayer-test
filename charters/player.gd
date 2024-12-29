@@ -35,11 +35,11 @@ func _ready() -> void:
 
 
 
-@rpc("authority","call_local","unreliable",0)
+@rpc("authority","call_local","reliable")
 func shoot():
 	if multiplayer.is_server():
 		var b : Node3D = bullet_asset.instantiate()
-		get_parent().add_child(b)
+		get_parent().add_child(b,true)
 		b.global_position = $muzle.global_position
 		b.global_rotation = $muzle.global_rotation
 
