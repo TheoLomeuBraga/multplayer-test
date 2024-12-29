@@ -11,7 +11,6 @@ var color : Color :
 	set(value):
 		var mat : Material = $body.get_surface_override_material(0)
 		mat.albedo_color = value
-		#$ColorPickerButton.color = value
 		$body.set_surface_override_material(0,mat)
 	get:
 		var mat : Material = $body.get_surface_override_material(0)
@@ -26,7 +25,8 @@ func _enter_tree() -> void:
 func set_random_color() -> void:
 	var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 	color = Color(rng.randf_range(0.25,1.0),rng.randf_range(0.25,1.0),rng.randf_range(0.25,1.0),1.0)
-
+	
+	$ColorPickerButton.color = color
 
 
 func _ready() -> void:
@@ -46,8 +46,15 @@ func shoot():
 
 func _physics_process(delta: float) -> void:
 	
+	
+	
+	
 	if is_multiplayer_authority():
-		global_position.y = 1
+		
+		if multiplayer.is_server():
+			$client_lable.visible = false
+		else:
+			$server_lable.visible = false
 		
 		if $RayCast3D.is_colliding():
 			var dist: float = $RayCast3D.global_position.distance_to( $RayCast3D.get_collision_point())
@@ -67,10 +74,9 @@ func _physics_process(delta: float) -> void:
 	elif $Camera3D != null:
 		$Camera3D.queue_free()
 
-@rpc("authority","call_remote","reliable")
-func set_color(c: Color) -> void:
-	color = c
+
 
 func _on_color_picker_button_color_changed(c: Color) -> void:
-	set_color.rpc(c)
-	
+	if is_multiplayer_authority():
+		print("color: ",c)
+		color = c
