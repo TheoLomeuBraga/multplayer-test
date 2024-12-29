@@ -7,7 +7,7 @@ class_name Player
 @export var bullet_asset : PackedScene
 
 
-@export var color : Color :
+var color : Color :
 	set(value):
 		var mat : Material = $body.get_surface_override_material(0)
 		mat.albedo_color = value
