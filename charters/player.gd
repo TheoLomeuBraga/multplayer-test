@@ -11,6 +11,7 @@ var color : Color :
 	set(value):
 		var mat : Material = $body.get_surface_override_material(0)
 		mat.albedo_color = value
+		$ColorPickerButton.color = value
 		$body.set_surface_override_material(0,mat)
 	get:
 		var mat : Material = $body.get_surface_override_material(0)
@@ -73,10 +74,12 @@ func _physics_process(delta: float) -> void:
 	
 	elif $Camera3D != null:
 		$Camera3D.queue_free()
+		$ColorPickerButton.visible = false
 
 
 
 func _on_color_picker_button_color_changed(c: Color) -> void:
+	print(name," ",is_multiplayer_authority())
 	if is_multiplayer_authority():
 		print("color: ",c)
 		color = c
