@@ -24,6 +24,8 @@ NetworkManager="*res://network_manager/NetworkManager.tscn"
 
 window/size/viewport_width=500
 window/size/viewport_height=300
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 
 [rendering]
 
