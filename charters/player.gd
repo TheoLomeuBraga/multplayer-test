@@ -52,10 +52,13 @@ func _physics_process(delta: float) -> void:
 	
 	if is_multiplayer_authority():
 		
-		if multiplayer.is_server():
-			$client_lable.visible = false
-		else:
-			$server_lable.visible = false
+		if $Lable.text == "":
+			if multiplayer.is_server():
+				$Lable.text = "server"
+				$TextEdit.text = "server"
+			else:
+				$Lable.text = "client"
+				$TextEdit.text = "client"
 		
 		if $RayCast3D.is_colliding():
 			var dist: float = $RayCast3D.global_position.distance_to( $RayCast3D.get_collision_point())
@@ -75,11 +78,14 @@ func _physics_process(delta: float) -> void:
 	elif $Camera3D != null:
 		$Camera3D.queue_free()
 		$ColorPickerButton.visible = false
+		$TextEdit.visible = false
 
 
 
 func _on_color_picker_button_color_changed(c: Color) -> void:
-	print(name," ",is_multiplayer_authority())
 	if is_multiplayer_authority():
-		print("color: ",c)
 		color = c
+
+
+func _on_text_edit_text_changed() -> void:
+	$Lable.text = $TextEdit.text

@@ -29,12 +29,9 @@ properties/1/replication_mode = 2
 properties/2/path = NodePath(".:color")
 properties/2/spawn = true
 properties/2/replication_mode = 2
-properties/3/path = NodePath("server_lable:visible")
+properties/3/path = NodePath("Lable:text")
 properties/3/spawn = true
-properties/3/replication_mode = 2
-properties/4/path = NodePath("client_lable:visible")
-properties/4/spawn = true
-properties/4/replication_mode = 2
+properties/3/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_076wp")
@@ -73,22 +70,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5c07k")
 
+[node name="Lable" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40318, 0)
+pixel_size = 0.01
+billboard = 1
+
 [node name="ColorPickerButton" type="ColorPickerButton" parent="."]
 offset_left = 424.0
 offset_top = 1.0
 offset_right = 499.0
 offset_bottom = 76.0
 
-[node name="server_lable" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40318, 0)
-pixel_size = 0.01
-billboard = 1
-text = "server"
-
-[node name="client_lable" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40318, 0)
-pixel_size = 0.01
-billboard = 1
-text = "client"
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 424.0
+offset_top = 76.0
+offset_right = 500.0
+offset_bottom = 127.0
 
 [connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
